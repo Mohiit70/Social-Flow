@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Navbar from '../components/Navbar';
 import UploadForm from '../components/ UploadForm';
 import PlatformSelector from '../components/ PlatformSelector';
 import DescriptionGenerator from '../components/DescriptionGenerator';
@@ -19,7 +18,7 @@ const TryItFree = () => {
   };
 
   const handleGenerateDescription = (description) => {
-    // Logic to handle description
+    // Logic
     console.log('Generated description:', description);
   };
 
@@ -32,29 +31,47 @@ const TryItFree = () => {
     }
   };
 
+  const handleDownloadImage = (image, platform) => {
+    const url = URL.createObjectURL(image);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `resized_${platform}.png`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <div className="min-h-screen bg-neutral-950 text-white">
-      <Navbar />
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold text-center mb-8">Try It Free</h1>
-        <UploadForm onImageUpload={handleImageUpload} />
-        <PlatformSelector onPlatformSelect={handlePlatformSelect} />
-        <DescriptionGenerator onGenerate={handleGenerateDescription} />
-        <button
-          onClick={handleImageResize}
-          className="mt-4 p-2 bg-blue-500 rounded hover:bg-blue-600 transition"
-        >
-          Resize Images
-        </button>
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="container mx-auto px-4 py-16 flex flex-col items-center"> 
+        <h1 className="text-4xl font-bold text-center mb-12">Try It Free</h1>
+        <div className="max-w-xl w-full"> 
+          <UploadForm onImageUpload={handleImageUpload} />
+          <PlatformSelector onPlatformSelect={handlePlatformSelect} />
+          <DescriptionGenerator onGenerate={handleGenerateDescription} />
+          <button
+            onClick={handleImageResize}
+            className="mt-8 w-full p-3 bg-blue-500 rounded hover:bg-blue-600 transition text-lg font-medium"
+          >
+            See The Magic ✨
+          </button>
+        </div>
+        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-5xl">
           {resizedImages.map((image, index) => (
-            <div key={index} className="flex flex-col items-center">
+            <div
+              key={index}
+              className="flex flex-col items-center p-4 rounded-lg bg-gray-800 shadow-md"
+            >
               <img
                 src={URL.createObjectURL(image)}
                 alt={`Resized for ${selectedPlatforms[index]}`}
-                className="max-w-full h-auto rounded shadow"
+                className="max-w-full h-auto rounded cursor-pointer"
+                onClick={() => handleDownloadImage(image, selectedPlatforms[index])}
               />
-              <p className="mt-2 text-sm text-gray-400">{selectedPlatforms[index]}</p>
+              <p className="mt-4 text-base text-gray-400 text-center">
+                {selectedPlatforms[index]}
+              </p>
             </div>
           ))}
         </div>

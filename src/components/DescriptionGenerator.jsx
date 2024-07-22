@@ -1,14 +1,19 @@
 import React from 'react';
 
 const DescriptionGenerator = ({ onGenerate }) => {
-  const handleClick = () => {
-    const description = 'Generated description with AI.';
+  const generateDescription = () => {
+    const description = 'This is a generated description using AI.';
     onGenerate(description);
   };
 
   return (
-    <div>
-      <button onClick={handleClick}>Generate Description</button>
+    <div className="mt-8 flex justify-center">
+      <button
+        onClick={generateDescription}
+        className="p-3 bg-blue-500 rounded hover:bg-blue-600 transition text-lg font-medium"
+      >
+        Generate Description
+      </button>
     </div>
   );
 };
