@@ -13,18 +13,42 @@ export const resizeImage = (file, platform) => {
           LinkedIn: { width: 1200, height: 627 },
         };
 
-        const { width, height } = dimensions[platform] || { width: img.width, height: img.height };
+        const { width: targetWidth, height: targetHeight } = dimensions[platform] || { width: img.width, height: img.height };
 
-        canvas.width = width;
-        canvas.height = height;
-        ctx.drawImage(img, 0, 0, width, height);
+        const imgAspectRatio = img.width / img.height;
+        const targetAspectRatio = targetWidth / targetHeight;
+
+        let drawWidth, drawHeight;
+
+        if (imgAspectRatio > targetAspectRatio) {
+
+          drawWidth = targetWidth;
+          drawHeight = targetWidth / imgAspectRatio;
+        } else {
+          drawHeight = targetHeight;
+          drawWidth = targetHeight * imgAspectRatio;
+        }
+
+        canvas.width = targetWidth;
+        canvas.height = targetHeight;
+
+        const xOffset = (targetWidth - drawWidth) / 2;
+        const yOffset = (targetHeight - drawHeight) / 2;
+
+        ctx.drawImage(img, xOffset, yOffset, drawWidth, drawHeight);
 
         canvas.toBlob((blob) => {
-          resolve(new File([blob], file.name, { type: file.type }));
+          if (blob) {
+            resolve(new File([blob], file.name, { type: file.type }));
+          } else {
+            reject(new Error('Blob creation failed'));
+          }
         }, file.type);
       };
+
       img.src = event.target.result;
     };
+
     reader.onerror = (error) => reject(error);
     reader.readAsDataURL(file);
   });
