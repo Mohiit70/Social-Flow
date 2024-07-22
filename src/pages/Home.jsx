@@ -8,7 +8,7 @@ const Home = () => {
       <Navbar />
       <div className="absolute top-0 z-[-2] h-screen w-screen"></div>
       <div className="flex flex-col items-center justify-center h-full text-center px-4">
-        <h1 className="text-5xl font-bold text-white">Unlock the power with AI Data Tools</h1>
+        <h1 className="text-5xl font-bold text-white">Flow into Social Media</h1>
         <p className="text-xl text-gray-300 mt-4">Get and keep useful statistics, research and report on your business performance faster and more accurately than ever before</p>
         <div className="mt-8 flex space-x-4">
           <Link to="/try-it-free" className="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700">Try It Free</Link>
