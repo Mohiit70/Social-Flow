@@ -14,9 +14,9 @@ const Navbar = () => {
         <div className="text-lg font-bold text-white">Social Flow</div>
         <div className="hidden md:flex space-x-4">
           <Link to="/" className="text-white hover:text-gray-400">Home</Link>
+          <Link to="/features" className="text-white hover:text-gray-400">Features</Link>
           <Link to="/about" className="text-white hover:text-gray-400">About</Link>
           <Link to="/github" className="text-white hover:text-gray-400">GitHub</Link>
-          <Link to="/contact" className="text-white hover:text-gray-400">Contact Us</Link>
         </div>
         <div className="hidden md:flex space-x-4">
           <Link to="/signup" className="text-white hover:text-gray-400">Sign Up</Link>
@@ -31,9 +31,9 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden bg-neutral-950 text-white">
           <Link to="/" className="block py-2 px-4 hover:bg-gray-700">Home</Link>
+          <Link to="/features" className="block py-2 px-4 hover:bg-gray-700">Features</Link>
           <Link to="/about" className="block py-2 px-4 hover:bg-gray-700">About</Link>
           <Link to="/github" className="block py-2 px-4 hover:bg-gray-700">GitHub</Link>
-          <Link to="/contact" className="block py-2 px-4 hover:bg-gray-700">Contact Us</Link>
           <Link to="/signup" className="block py-2 px-4 hover:bg-gray-700">Sign Up</Link>
           <Link to="/login" className="block py-2 px-4 hover:bg-gray-700">Login</Link>
         </div>

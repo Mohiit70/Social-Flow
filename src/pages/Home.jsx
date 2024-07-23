@@ -12,6 +12,7 @@ const Home = () => {
         <p className="text-xl text-gray-300 mt-4">Get and keep useful statistics, research and report on your business performance faster and more accurately than ever before</p>
         <div className="mt-8 flex space-x-4">
           <Link to="/try-it-free" className="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700">Try It Free</Link>
+          <Link to="/features" className="bg-transparent border border-white text-white px-6 py-3 rounded-full hover:bg-gray-700">Features</Link>
           <Link to="/how-it-works" className="bg-transparent border border-white text-white px-6 py-3 rounded-full hover:bg-gray-700">How It Works</Link>
         </div>
       </div>
