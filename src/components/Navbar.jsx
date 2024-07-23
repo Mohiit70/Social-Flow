@@ -14,7 +14,8 @@ const Navbar = () => {
         <div className="text-lg font-bold text-white">Social Flow</div>
         <div className="hidden md:flex space-x-4">
           <Link to="/" className="text-white hover:text-gray-400">Home</Link>
-          <Link to="/features" className="text-white hover:text-gray-400">Features</Link>
+          {/* Use anchor link to scroll to features section */}
+          <a href="#features" className="text-white hover:text-gray-400">Features</a>
           <Link to="/about" className="text-white hover:text-gray-400">About</Link>
           <Link to="/github" className="text-white hover:text-gray-400">GitHub</Link>
         </div>
@@ -31,7 +32,7 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden bg-neutral-950 text-white">
           <Link to="/" className="block py-2 px-4 hover:bg-gray-700">Home</Link>
-          <Link to="/features" className="block py-2 px-4 hover:bg-gray-700">Features</Link>
+          <a href="#features" className="block py-2 px-4 hover:bg-gray-700">Features</a>
           <Link to="/about" className="block py-2 px-4 hover:bg-gray-700">About</Link>
           <Link to="/github" className="block py-2 px-4 hover:bg-gray-700">GitHub</Link>
           <Link to="/signup" className="block py-2 px-4 hover:bg-gray-700">Sign Up</Link>
