@@ -18,7 +18,7 @@ const DescriptionGenerator = ({ onGenerate }) => {
 
     try {
       const response = await fetch(
-        // api will added
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=YOUR_API_KEY`,
         {
           method: 'POST',
           headers: {
@@ -29,18 +29,27 @@ const DescriptionGenerator = ({ onGenerate }) => {
       );
 
       if (!response.ok) {
-        throw new Error(`Failed to generate description: ${response.statusText}`);
+        throw new Error('Failed to generate description');
       }
 
       const data = await response.json();
-      console.log('API Response:', data);
+      console.log('API Response:', JSON.stringify(data, null, 2));
 
-      const description = data.candidates?.[0]?.text ?? "No description available.";
-      console.log('Extracted Description:', description);
-      onGenerate(description);
+      
+      if (data && data.candidates && data.candidates.length > 0) {
+        const candidate = data.candidates[0]; 
+        console.log('First Candidate:', JSON.stringify(candidate, null, 2));
+
+        const description = candidate.content?.parts?.[0]?.text || 'No description found';
+        console.log('Extracted Description:', description);
+        onGenerate(description);
+      } else {
+        console.warn('No candidates found in the response:', JSON.stringify(data, null, 2));
+        onGenerate('No description available.');
+      }
     } catch (error) {
       console.error('Error generating description:', error);
-      onGenerate("Error generating description.");
+      onGenerate('Error generating description.');
     }
   };
 
