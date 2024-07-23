@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import UploadForm from '../components/ UploadForm';
 import PlatformSelector from '../components/ PlatformSelector';
 import DescriptionGenerator from '../components/DescriptionGenerator';
-import DescriptionModal from '../components/DescriptionModal'
+import DescriptionModal from '../components/DescriptionModal';
 import { resizeImage } from '../utils/resizeImage';
 
 const createDownloadLink = (image, platform) => {
@@ -20,7 +20,8 @@ const TryItFree = () => {
   const [uploadedImage, setUploadedImage] = useState(null);
   const [selectedPlatforms, setSelectedPlatforms] = useState([]);
   const [resizedImages, setResizedImages] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false); // State for modal visibility
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [generatedPost, setGeneratedPost] = useState('');
 
   const handleImageUpload = useCallback((file) => {
     setUploadedImage(file);
@@ -32,6 +33,7 @@ const TryItFree = () => {
 
   const handleGenerateDescription = useCallback((description) => {
     console.log('Generated description:', description);
+    setGeneratedPost(description);
   }, []);
 
   const handleImageResize = useCallback(async () => {
@@ -56,9 +58,7 @@ const TryItFree = () => {
   };
 
   const handleDescriptionSubmit = async (description) => {
-
     console.log('Submitting description:', description);
-    
   };
 
   const imageCards = resizedImages.map((image, index) => (
@@ -80,9 +80,9 @@ const TryItFree = () => {
 
   return (
     <div className="min-h-screen bg-neutral-950 text-white">
-      <div className="container mx-auto px-4 py-16 flex flex-col items-center"> 
+      <div className="container mx-auto px-4 py-16 flex flex-col items-center">
         <h1 className="text-4xl font-bold text-center mb-12">Try It Free</h1>
-        <div className="max-w-xl w-full"> 
+        <div className="max-w-xl w-full">
           <UploadForm onImageUpload={handleImageUpload} />
           <PlatformSelector onPlatformSelect={handlePlatformSelect} />
           <DescriptionGenerator onGenerate={handleGenerateDescription} />
@@ -102,11 +102,17 @@ const TryItFree = () => {
         <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-5xl">
           {imageCards}
         </div>
+        {generatedPost && (
+          <div className="mt-8 p-4 bg-gray-800 rounded">
+            <h2 className="text-lg font-semibold mb-2">Generated Social Media Post:</h2>
+            <p>{generatedPost}</p>
+          </div>
+        )}
       </div>
-      <DescriptionModal 
-        isOpen={isModalOpen} 
-        onClose={handleCloseModal} 
-        onSubmit={handleDescriptionSubmit} 
+      <DescriptionModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        onSubmit={handleDescriptionSubmit}
       />
     </div>
   );
