@@ -15,7 +15,7 @@
     "@fortawesome/react-fontawesome": "^0.2.2",
     "axios": "^1.7.2",
     "clsx": "^2.1.1",
-    "framer-motion": "^11.3.12",
+    "framer-motion": "^11.3.17",
     "pdf-lib": "^1.17.1",
     "react": "^18.3.1",
     "react-calendar": "^5.0.0",
