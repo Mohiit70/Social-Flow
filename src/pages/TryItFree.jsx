@@ -22,6 +22,7 @@ const TryItFree = () => {
   const [resizedImages, setResizedImages] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [generatedPost, setGeneratedPost] = useState('');
+  const [userDescription, setUserDescription] = useState('');
 
   const handleImageUpload = useCallback((file) => {
     setUploadedImage(file);
@@ -32,7 +33,6 @@ const TryItFree = () => {
   }, []);
 
   const handleGenerateDescription = useCallback((description) => {
-    console.log('Generated description:', description);
     setGeneratedPost(description);
   }, []);
 
@@ -58,18 +58,19 @@ const TryItFree = () => {
   };
 
   const handleDescriptionSubmit = async (description) => {
-    console.log('Submitting description:', description);
+    setUserDescription(description);
+    setIsModalOpen(false);
   };
 
   const imageCards = resizedImages.map((image, index) => (
     <div
       key={index}
-      className="flex flex-col items-center p-4 rounded-lg bg-gray-800 shadow-md"
+      className="flex flex-col items-center p-4 rounded-lg bg-gray-800 shadow-md hover:shadow-lg transition-all duration-300"
     >
       <img
         src={URL.createObjectURL(image)}
         alt={`Resized for ${selectedPlatforms[index]}`}
-        className="max-w-full h-auto rounded cursor-pointer"
+        className="max-w-full h-auto rounded cursor-pointer hover:opacity-80 transition-opacity duration-300"
         onClick={() => handleDownloadImage(image, selectedPlatforms[index])}
       />
       <p className="mt-4 text-base text-gray-400 text-center">
@@ -79,33 +80,39 @@ const TryItFree = () => {
   ));
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-white">
+    <div className="min-h-screen bg-gradient-to-b from-neutral-950 to-gray-900 text-white font-sans">
       <div className="container mx-auto px-4 py-16 flex flex-col items-center">
-        <h1 className="text-4xl font-bold text-center mb-12">Try It Free</h1>
-        <div className="max-w-xl w-full">
+        <h1 className="text-5xl font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
+          Try Social Flow Free
+        </h1>
+        <div className="max-w-xl w-full space-y-8 bg-gray-800 p-8 rounded-lg shadow-lg">
           <UploadForm onImageUpload={handleImageUpload} />
           <PlatformSelector onPlatformSelect={handlePlatformSelect} />
-          <DescriptionGenerator onGenerate={handleGenerateDescription} />
-          <button
-            onClick={handleImageResize}
-            className="mt-8 w-full p-3 bg-blue-500 rounded hover:bg-blue-600 transition text-lg font-medium"
-          >
-            See The Magic ✨
-          </button>
           <button
             onClick={handleOpenModal}
-            className="mt-4 w-full p-3 bg-green-500 rounded hover:bg-green-600 transition text-lg font-medium"
+            className="w-full py-2 px-4 bg-gradient-to-r from-green-400 to-blue-500 rounded-md hover:from-green-500 hover:to-blue-600 transition text-sm font-medium shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
           >
             Write a Description 📝
           </button>
+          <DescriptionGenerator onGenerate={handleGenerateDescription} userDescription={userDescription} />
+          <button
+            onClick={handleImageResize}
+            className="w-full py-2 px-4 bg-gradient-to-r from-purple-400 to-pink-500 rounded-md hover:from-purple-500 hover:to-pink-600 transition text-sm font-medium shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+          >
+            See The Magic ✨
+          </button>
         </div>
-        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-5xl">
-          {imageCards}
-        </div>
+        {resizedImages.length > 0 && (
+          <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-5xl">
+            {imageCards}
+          </div>
+        )}
         {generatedPost && (
-          <div className="mt-8 p-4 bg-gray-800 rounded">
-            <h2 className="text-lg font-semibold mb-2">Generated Social Media Post:</h2>
-            <p>{generatedPost}</p>
+          <div className="mt-8 p-6 bg-gray-800 rounded-lg shadow-lg w-full max-w-2xl">
+            <h2 className="text-2xl font-semibold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
+              Generated Social Media Post:
+            </h2>
+            <p className="text-gray-300 leading-relaxed">{generatedPost}</p>
           </div>
         )}
       </div>

@@ -7,28 +7,36 @@ const DescriptionModal = ({ isOpen, onClose, onSubmit }) => {
     e.preventDefault();
     onSubmit(description);
     setDescription('');
-    onClose();
   };
 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white text-black p-6 rounded shadow-md w-11/12 md:w-1/3">
-        <h2 className="text-xl font-bold mb-4">Write a Short Description</h2>
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+      <div className="bg-gray-900 text-white p-8 rounded-lg shadow-2xl w-11/12 md:w-2/3 lg:w-1/2 max-w-2xl">
+        <h2 className="text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
+          Write a Short Description
+        </h2>
         <form onSubmit={handleSubmit}>
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Write your description here..."
-            className="w-full h-32 p-2 border rounded mb-4"
+            className="w-full h-40 p-4 bg-gray-800 text-white border border-gray-700 rounded-lg mb-6 focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
-          <div className="flex justify-end">
-            <button type="button" onClick={onClose} className="mr-2 text-gray-500">
+          <div className="flex justify-end space-x-4">
+            <button
+              type="button"
+              onClick={onClose}
+              className="px-6 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors duration-300"
+            >
               Cancel
             </button>
-            <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
+            <button
+              type="submit"
+              className="px-6 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:from-blue-600 hover:to-purple-700 transition-colors duration-300"
+            >
               Submit
             </button>
           </div>
