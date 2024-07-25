@@ -25,10 +25,10 @@ const HowItWorks = () => {
       }, {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer YOUR_GEMINI_API_KEY`
+          'Authorization': ``
         },
         params: {
-          key: 'YOUR_GEMINI_API_KEY'
+          key: ''
         }
       });
 

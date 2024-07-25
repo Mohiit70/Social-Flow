@@ -8,21 +8,26 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
+  const fontStyle = {
+    fontFamily: "'__GeistSans_3a0388', '__GeistSans_Fallback_3a0388', sans-serif",
+    fontSize: '18px',
+    lineHeight: '28px',
+    fontWeight: 400,
+    color: 'rgb(179, 188, 197)',
+    textDecoration: 'none',
+  };
+
   return (
     <nav className="absolute top-0 left-0 w-full z-10 bg-transparent">
       <div className="container mx-auto flex justify-between items-center py-6 px-8">
-        <Link to="/" className="text-xl text-white font-sans font-normal">
+        <Link to="/" className="text-xl font-sans font-normal" style={fontStyle}>
           Social Flow
         </Link>
         <div className="hidden md:flex space-x-6">
-          <Link to="/" className="text-white hover:text-gray-300">Home</Link>
-          <a href="#features" className="text-white hover:text-gray-300">Features</a>
-          <a href="#about" className="text-white hover:text-gray-300">About</a>
-          <Link to="https://github.com/Mohiit70/Social-Flow" className="text-white hover:text-gray-300">GitHub</Link>
-        </div>
-        <div className="hidden md:flex space-x-4">
-          <Link to="/signup" className="text-white hover:text-gray-300">Sign Up</Link>
-          <Link to="/login" className="text-white hover:text-gray-300">Login</Link>
+          <Link to="/" style={fontStyle}>Home</Link>
+          <a href="#features" style={fontStyle}>Features</a>
+          <a href="#about" style={fontStyle}>About</a>
+          <Link to="https://github.com/Mohiit70/Social-Flow" style={fontStyle}>GitHub</Link>
         </div>
         <button 
           className="md:hidden text-white focus:outline-none" 
@@ -36,12 +41,10 @@ const Navbar = () => {
       </div>
       {isOpen && (
         <div className="md:hidden bg-neutral-950">
-          <Link to="/" className="block py-2 px-4 text-white hover:bg-gray-800">Home</Link>
-          <a href="#features" className="block py-2 px-4 text-white hover:bg-gray-800">Features</a>
-          <Link to="/about" className="block py-2 px-4 text-white hover:bg-gray-800">About</Link>
-          <Link to="/github" className="block py-2 px-4 text-white hover:bg-gray-800">GitHub</Link>
-          <Link to="/signup" className="block py-2 px-4 text-white hover:bg-gray-800">Sign Up</Link>
-          <Link to="/login" className="block py-2 px-4 text-white hover:bg-gray-800">Login</Link>
+          <Link to="/" className="block py-2 px-4 hover:bg-gray-800" style={fontStyle}>Home</Link>
+          <a href="#features" className="block py-2 px-4 hover:bg-gray-800" style={fontStyle}>Features</a>
+          <Link to="/about" className="block py-2 px-4 hover:bg-gray-800" style={fontStyle}>About</Link>
+          <Link to="https://github.com/Mohiit70/Social-Flow" className="block py-2 px-4 hover:bg-gray-800" style={fontStyle}>GitHub</Link>
         </div>
       )}
     </nav>

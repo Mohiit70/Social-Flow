@@ -5,50 +5,46 @@ import ToneAnalyzer from '../components/ToneAnalyzer';
 
 const ToneAnalyzerPage = () => {
   return (
-    <div className="relative min-h-screen w-full bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
       <Navbar />
-
-      <div className="container mx-auto px-4 py-20">
-        <motion.h1 
-          className="text-4xl lg:text-6xl leading-tight text-white mb-6 text-center"
-          style={{ fontFamily: "'__GeistSans_3a0388', '__GeistSans_Fallback_3a0388', sans-serif", fontWeight: 400 }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          AI-Powered Tone Analysis
-        </motion.h1>
+      <div className="container mx-auto px-4 py-24 flex flex-col items-center">
         <motion.p 
-          className="mb-12 text-center"
-          style={{ fontFamily: "'__GeistSans_3a0388', '__GeistSans_Fallback_3a0388', sans-serif", fontSize: '18px', lineHeight: '28px', fontWeight: 400, color: 'rgb(179, 188, 197)' }}
-          initial={{ opacity: 0, y: 20 }}
+          className="text-xl text-center text-gray-300 mb-12"
+          initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.5 }}
         >
-          Analyze and adjust the tone of your social media posts for better engagement
+          Refine your text's tone for better engagement
         </motion.p>
-
-        <ToneAnalyzer />
+        
+        <motion.div 
+          className="w-full max-w-4xl mb-24"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          <ToneAnalyzer />
+        </motion.div>
 
         <motion.div 
-          className="mt-16"
+          className="mt-16 text-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <h2 className="text-2xl lg:text-4xl leading-tight text-white mb-6 text-center">How It Works</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
-              <h3 className="text-xl font-semibold text-white mb-2">1. Enter Your Text</h3>
-              <p className="text-gray-300">Paste your social media post or content into the text area.</p>
+          <h2 className="text-2xl font-semibold mb-4">Why Use Our Tool?</h2>
+          <div className="flex justify-center space-x-8">
+            <div className="flex flex-col items-center">
+              <svg className="w-12 h-12 mb-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <p className="text-lg">Accurate Analysis</p>
             </div>
-            <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
-              <h3 className="text-xl font-semibold text-white mb-2">2. Analyze Tone</h3>
-              <p className="text-gray-300">Our AI will analyze the tone of your content and provide insights.</p>
+            <div className="flex flex-col items-center">
+              <svg className="w-12 h-12 mb-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" /></svg>
+              <p className="text-lg">Customizable Suggestions</p>
             </div>
-            <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
-              <h3 className="text-xl font-semibold text-white mb-2">3. Adjust as Needed</h3>
-              <p className="text-gray-300">Use our AI to adjust the tone to better suit your audience and goals.</p>
+            <div className="flex flex-col items-center">
+              <svg className="w-12 h-12 mb-2 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+              <p className="text-lg">Instant Results</p>
             </div>
           </div>
         </motion.div>

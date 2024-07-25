@@ -18,10 +18,10 @@ const ContentGenerator = ({ onGenerate }) => {
       }, {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `AIzaSyBK-qCQco7C3ALp_RGCPb8dTJbsj_FQibc` // Replace with your actual Gemini API key
+          'Authorization': `` 
         },
         params: {
-          key: 'AIzaSyBK-qCQco7C3ALp_RGCPb8dTJbsj_FQibc' // Replace with your actual Gemini API key
+          key: ''
         }
       });
 

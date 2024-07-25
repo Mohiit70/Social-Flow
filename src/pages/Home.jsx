@@ -21,7 +21,7 @@ const Home = () => {
 
       <div className="container mx-auto px-4 py-20 flex flex-col items-center justify-center min-h-screen">
         <div className="text-center max-w-3xl">
-          <motion.h1 
+          <motion.h1
             className="text-4xl lg:text-6xl leading-tight text-white mb-6"
             style={{ fontFamily: "'__GeistSans_3a0388', '__GeistSans_Fallback_3a0388', sans-serif", fontWeight: 400 }}
             initial={{ opacity: 0, y: 20 }}
@@ -30,7 +30,7 @@ const Home = () => {
           >
             The AI-Powered Solution for Developers
           </motion.h1>
-          <motion.p 
+          <motion.p
             className="mb-8"
             style={{ fontFamily: "'__GeistSans_3a0388', '__GeistSans_Fallback_3a0388', sans-serif", fontSize: '18px', lineHeight: '28px', fontWeight: 400, color: 'rgb(179, 188, 197)' }}
             initial={{ opacity: 0, y: 20 }}
@@ -39,7 +39,7 @@ const Home = () => {
           >
             Seamlessly Create and Customize Your Social Media Posts with Minimal Effort
           </motion.p>
-          <motion.div 
+          <motion.div
             className="flex justify-center space-x-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -53,15 +53,15 @@ const Home = () => {
               <span className="relative z-10">Content Calendar</span>
               <div className="absolute inset-0 bg-gray-700 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
             </Link>
-            <Link to="/tone-analyzer" className="relative inline-block bg-green-600 text-white px-6 py-3 rounded-full overflow-hidden group transition transform hover:scale-105">
+            <Link to="/tone-analyzer" className="relative inline-block bg-indigo-600 text-white px-6 py-3 rounded-full overflow-hidden group transition transform hover:scale-105">
               <span className="relative z-10">AI Tone Analyzer</span>
-              <div className="absolute inset-0 bg-green-700 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
+              <div className="absolute inset-0 bg-indigo-700 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
             </Link>
           </motion.div>
         </div>
       </div>
 
-      <motion.div 
+      <motion.div
         className="flex justify-center items-center py-20"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -93,8 +93,8 @@ const Home = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <motion.div 
-                key={index} 
+              <motion.div
+                key={index}
                 className="bg-gray-800 p-6 rounded-lg shadow-lg"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -137,9 +137,9 @@ const Home = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <img 
-                src="/img/About.png" 
-                alt="About Social Flow" 
+              <img
+                src="/img/About.png"
+                alt="About Social Flow"
                 className="rounded-lg shadow-xl object-cover w-full h-full"
               />
             </motion.div>
