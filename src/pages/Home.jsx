@@ -45,13 +45,17 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <Link to="/try-it-free" className="relative inline-block bg-blue-600 text-white px-6 py-3 rounded-full overflow-hidden group">
+            <Link to="/try-it-free" className="relative inline-block bg-blue-600 text-white px-6 py-3 rounded-full overflow-hidden group transition transform hover:scale-105">
               <span className="relative z-10">Create Posts</span>
               <div className="absolute inset-0 bg-blue-700 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
             </Link>
-            <Link to="/how-it-works" className="relative inline-block bg-transparent border border-white text-white px-6 py-3 rounded-full overflow-hidden group">
+            <Link to="/how-it-works" className="relative inline-block bg-transparent border border-white text-white px-6 py-3 rounded-full overflow-hidden group transition transform hover:scale-105">
               <span className="relative z-10">Content Calendar</span>
               <div className="absolute inset-0 bg-gray-700 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
+            </Link>
+            <Link to="/tone-analyzer" className="relative inline-block bg-green-600 text-white px-6 py-3 rounded-full overflow-hidden group transition transform hover:scale-105">
+              <span className="relative z-10">AI Tone Analyzer</span>
+              <div className="absolute inset-0 bg-green-700 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
             </Link>
           </motion.div>
         </div>
@@ -153,7 +157,7 @@ const Home = () => {
           </p>
           <Link
             to="/try-it-free"
-            className="inline-block rounded bg-white text-blue-600 px-12 py-3 text-sm font-medium transition hover:bg-gray-100 focus:outline-none focus:ring focus:ring-yellow-400"
+            className="inline-block rounded bg-white text-blue-600 px-12 py-3 text-sm font-medium transition hover:bg-gray-100 focus:outline-none focus:ring focus:ring-yellow-400 transform hover:scale-105"
             style={{ fontFamily: "'__GeistSans_3a0388', '__GeistSans_Fallback_3a0388', sans-serif" }}
           >
             Get Started Now
@@ -161,7 +165,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
         <div className="max-w-screen-xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -173,6 +176,7 @@ const Home = () => {
               <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
               <ul className="space-y-2">
                 <li><Link to="#features" className="text-sm text-gray-400 hover:text-white">Features</Link></li>
+                <li><Link to="/tone-analyzer" className="text-sm text-gray-400 hover:text-white">Tone Analyzer</Link></li>
                 <li><Link to="#about" className="text-sm text-gray-400 hover:text-white">About Us</Link></li>
                 <li><Link to="https://github.com/Mohiit70/Social-Flow" className="text-sm text-gray-400 hover:text-white">Contact</Link></li>
               </ul>
@@ -180,10 +184,10 @@ const Home = () => {
             <div>
               <h3 className="text-lg font-semibold mb-4">Connect With Us</h3>
               <div className="flex space-x-4">
-                <a href="https://github.com/Mohiit70/Social-Flow" className="text-gray-400 hover:text-white"><FontAwesomeIcon icon={faFacebook} /></a>
-                <a href="https://x.com/MohitB_twt" className="text-gray-400 hover:text-white"><FontAwesomeIcon icon={faTwitter} /></a>
-                <a href="https://github.com/Mohiit70/Social-Flow" className="text-gray-400 hover:text-white"><FontAwesomeIcon icon={faInstagram} /></a>
-                <a href="https://www.linkedin.com/in/mohit-bisht-22ab5b256/" className="text-gray-400 hover:text-white"><FontAwesomeIcon icon={faLinkedin} /></a>
+                <a href="https://github.com/Mohiit70/Social-Flow" className="text-gray-400 hover:text-white transition transform hover:scale-110"><FontAwesomeIcon icon={faFacebook} /></a>
+                <a href="https://x.com/MohitB_twt" className="text-gray-400 hover:text-white transition transform hover:scale-110"><FontAwesomeIcon icon={faTwitter} /></a>
+                <a href="https://github.com/Mohiit70/Social-Flow" className="text-gray-400 hover:text-white transition transform hover:scale-110"><FontAwesomeIcon icon={faInstagram} /></a>
+                <a href="https://www.linkedin.com/in/mohit-bisht-22ab5b256/" className="text-gray-400 hover:text-white transition transform hover:scale-110"><FontAwesomeIcon icon={faLinkedin} /></a>
               </div>
             </div>
           </div>
