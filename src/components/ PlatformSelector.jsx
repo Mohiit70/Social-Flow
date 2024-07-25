@@ -1,7 +1,7 @@
 import React from 'react';
 
 const PlatformSelector = ({ onPlatformSelect }) => {
-  const platforms = ['Twitter', 'Instagram', 'LinkedIn', 'Facebook', 'TikTok'];
+  const platforms = ['Twitter', 'Instagram', 'LinkedIn', 'Facebook'];
 
   const handlePlatformChange = (event) => {
     const { checked, value } = event.target;

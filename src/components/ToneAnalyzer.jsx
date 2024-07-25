@@ -5,10 +5,11 @@ const ToneAnalyzer = () => {
   const [content, setContent] = useState('');
   const [analysis, setAnalysis] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  
 
   const callGeminiAPI = async (prompt) => {
     const apiEndpoint = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
-    const apiKey = ''
+    const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
 
     try {
       const response = await fetch(`${apiEndpoint}?key=${apiKey}`, {

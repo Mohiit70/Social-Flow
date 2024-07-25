@@ -18,10 +18,10 @@ const ContentGenerator = ({ onGenerate }) => {
       }, {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `` 
+          'Authorization': `Bearer ${process.env.NEXT_PUBLIC_GEMINI_API_KEY}`
         },
         params: {
-          key: ''
+          key: process.env.NEXT_PUBLIC_GEMINI_API_KEY
         }
       });
 

@@ -61,31 +61,6 @@ const Home = () => {
         </div>
       </div>
 
-      <motion.div
-        className="flex justify-center items-center py-20"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 0.6 }}
-      >
-        <div className="relative h-48 w-48">
-          <img
-            src="/img/Social_Flow.png"
-            alt="Logo"
-            className="absolute top-0 left-0 right-0 bottom-0 m-auto h-24 w-24"
-          />
-          <motion.div
-            className="absolute top-0 left-0 right-0 bottom-0 m-auto flex items-center justify-center h-full w-full"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          >
-            <FontAwesomeIcon icon={faFacebook} className="text-3xl text-blue-500 absolute" style={{ transform: 'translateY(-60px)' }} />
-            <FontAwesomeIcon icon={faTwitter} className="text-3xl text-blue-400 absolute" style={{ transform: 'translate(60px, 0)' }} />
-            <FontAwesomeIcon icon={faInstagram} className="text-3xl text-pink-600 absolute" style={{ transform: 'translateY(60px)' }} />
-            <FontAwesomeIcon icon={faLinkedin} className="text-3xl text-blue-700 absolute" style={{ transform: 'translate(-60px, 0)' }} />
-          </motion.div>
-        </div>
-      </motion.div>
-
       <section className="py-16 px-4 bg-gray-900" id="features">
         <div className="max-w-screen-xl mx-auto">
           <h2 className="text-3xl font-bold sm:text-4xl text-white mb-12 text-center" style={{ fontFamily: "'__GeistSans_3a0388', '__GeistSans_Fallback_3a0388', sans-serif" }}>
