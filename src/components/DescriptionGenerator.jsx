@@ -1,38 +1,33 @@
 import React from 'react';
+import axios from 'axios';
 
 const DescriptionGenerator = ({ onGenerate, userDescription }) => {
   const generateDescription = async () => {
     const prompt = `Draft a compelling social media post based on the following user description: "${userDescription}". The post should be engaging, have a human tone, use emojis, and include relevant hashtags.`;
 
-    const requestBody = {
-      contents: [
-        {
-          parts: [
+    try {
+      const response = await axios({
+        url: `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${
+          import.meta.env.VITE_API_GENERATIVE_LANGUAGE_CLIENT
+        }`,
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        data: {
+          contents: [
             {
-              text: prompt,
+              parts: [
+                {
+                  text: prompt,
+                },
+              ],
             },
           ],
         },
-      ],
-    };
+      });
 
-    try {
-      const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${process.env.NEXT_PUBLIC_GEMINI_API_KEY}`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(requestBody),
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error('Failed to generate description');
-      }
-
-      const data = await response.json();
+      const data = response.data;
       console.log('API Response:', JSON.stringify(data, null, 2));
 
       if (data && data.candidates && data.candidates.length > 0) {

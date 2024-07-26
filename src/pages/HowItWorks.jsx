@@ -18,17 +18,16 @@ const HowItWorks = () => {
     try {
       const prompt = `Create a ${calendarType}-day content calendar based on: ${ideas}. For each day, provide a concise, engaging content idea with a brief description and relevant hashtags.`;
 
-      const response = await axios.post('https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent', {
-        contents: [{
-          parts: [{ text: prompt }]
-        }]
-      }, {
+      const response = await axios({
+        method: 'post',
+        url: `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${import.meta.env.VITE_API_GENERATIVE_LANGUAGE_CLIENT}`,
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${process.env.NEXT_PUBLIC_GEMINI_API_KEY}`
         },
-        params: {
-          key: process.env.NEXT_PUBLIC_GEMINI_API_KEY
+        data: {
+          contents: [{
+            parts: [{ text: prompt }]
+          }]
         }
       });
 
@@ -52,7 +51,7 @@ const HowItWorks = () => {
   const handleDownloadPDF = async () => {
     const pdfDoc = await PDFDocument.create();
     const page = pdfDoc.addPage();
-    const { width, height } = page.getSize();
+    const { height } = page.getSize();
     const fontSize = 12;
 
     generatedContent.forEach((item, index) => {
@@ -130,8 +129,9 @@ const HowItWorks = () => {
           <div className="bg-neutral-900 p-6 rounded-lg shadow-lg mt-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-white mb-2 text-sm">Select Calendar Duration:</label>
+                <label htmlFor="calendarType" className="block text-white mb-2 text-sm">Select Calendar Duration:</label>
                 <select
+                  id="calendarType"
                   className="block w-full p-2 mb-4 bg-gray-800 text-white rounded-md text-sm"
                   value={calendarType}
                   onChange={e => setCalendarType(e.target.value)}
@@ -140,8 +140,9 @@ const HowItWorks = () => {
                   <option value="30">1 Month</option>
                 </select>
 
-                <label className="block text-white mb-2 text-sm">Enter Your Ideas or Keywords:</label>
+                <label htmlFor="ideas" className="block text-white mb-2 text-sm">Enter Your Ideas or Keywords:</label>
                 <input
+                  id="ideas"
                   type="text"
                   className="block w-full p-2 mb-4 bg-gray-800 text-white rounded-md text-sm"
                   value={ideas}
@@ -150,9 +151,9 @@ const HowItWorks = () => {
                 />
 
                 <button
-                  className="bg-blue-600 text-white px-6 py-3 rounded-full transition hover:bg-blue-700 w-full text-sm font-semibold"
+                  className="bg-blue-600 text-white px-6 py-3 rounded-full transition hover:bg-blue-700 w-full text-sm font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
                   onClick={handleGenerateContent}
-                  disabled={isLoading}
+                  disabled={isLoading || !ideas.trim()}
                 >
                   {isLoading ? (
                     <span className="flex items-center justify-center">
