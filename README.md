@@ -71,12 +71,7 @@ To set up Social Flow on your local machine, follow these instructions:
 
 ## 🎥 Demo Video
 
-Watch our demo video to see Social Flow in action!
-
-<video width="100%" controls>
-  <source src="/vidoe/loom-video.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+[Download and watch our demo video](./public/vidoe/loom-video.mp4) to see Social Flow in action!
 
 ## 🤝 Contributing
 
